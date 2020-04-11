@@ -5,8 +5,11 @@ PANDAS
 https://pandas.pydata.org/docs/
 
 
-Importar arquivos de planilha (xlsx, xls, ods)
+Importar arquivos de dados: 
+(xlsx, xls, ods)
 df=pd.read_excel('nome do arquivo', sheet_name=[], usecols= range([]), skiprows= range([]))
+(csv)
+
 
 Eliminar colunas desnecessárias
 df.drop('[nome da coluna]', axis=1, inplace=True)
