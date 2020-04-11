@@ -1,0 +1,20 @@
+referência rápida para python
+
+PANDAS
+======
+https://pandas.pydata.org/docs/
+
+
+Importar arquivos de planilha (xlsx, xls, ods)
+df=pd.read_excel('nome do arquivo', sheet_name=[], usecols= range([]), skiprows= range([]))
+
+Eliminar colunas desnecessárias
+df.drop('[nome da coluna]', axis=1, inplace=True)
+
+Eliminar registros repetidos
+df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
+
+Eliminar linhas
+
+Escrever arquivo csv
+df.to_csv('df.csv', index= False)
