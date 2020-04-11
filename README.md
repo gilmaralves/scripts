@@ -1,4 +1,6 @@
-scripts
-=======
+scripts e comandos
+==================
 
-scripts para uso no linux
+referência rápido de scripts e comandos
+
+PYTHON
