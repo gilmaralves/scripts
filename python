@@ -19,5 +19,8 @@ df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
 
 Eliminar linhas
 
+Selecionar colunas
+df[['nomes das colunas entre aspas simples e separados por vírgulas']]
+
 Escrever arquivo csv
 df.to_csv('df.csv', index= False)
