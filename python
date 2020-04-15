@@ -10,9 +10,12 @@ Importar arquivos de dados:
 df=pd.read_excel('nome do arquivo', sheet_name=[], usecols= range([]), skiprows= range([]))
 (csv)
 
+Colocar tudo maíúsculo
+
 
 Eliminar colunas desnecessárias
 df.drop('[nome da coluna]', axis=1, inplace=True)
+df.drop(df.columns[[0, 4, 2]], axis = 1, inplace = True)
 
 Eliminar registros repetidos
 df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
@@ -24,3 +27,7 @@ df[['nomes das colunas entre aspas simples e separados por vírgulas']]
 
 Escrever arquivo csv
 df.to_csv('df.csv', index= False)
+
+Inserir colunas e valores
+df.insert(2, "Age", [21, 23, 24, 21], True) 
+df['Nome da coluna'] = 'valor'
