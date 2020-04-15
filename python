@@ -11,7 +11,12 @@ df=pd.read_excel('nome do arquivo', sheet_name=[], usecols= range([]), skiprows=
 (csv)
 
 Colocar tudo maíúsculo
+alvaras['Mãe']=alvaras['Mãe'].str.upper()
+alvaras['Nome Preso']=alvaras['Nome Preso'].str.upper()
 
+Inserir colunas e valores
+df.insert(2, "Age", [21, 23, 24, 21], True) 
+df['Nome da coluna'] = 'valor'
 
 Eliminar colunas desnecessárias
 df.drop('[nome da coluna]', axis=1, inplace=True)
@@ -21,6 +26,7 @@ Eliminar registros repetidos
 df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
 
 Eliminar linhas
+df=df[:-1]
 
 Selecionar colunas
 df[['nomes das colunas entre aspas simples e separados por vírgulas']]
@@ -28,6 +34,4 @@ df[['nomes das colunas entre aspas simples e separados por vírgulas']]
 Escrever arquivo csv
 df.to_csv('df.csv', index= False)
 
-Inserir colunas e valores
-df.insert(2, "Age", [21, 23, 24, 21], True) 
-df['Nome da coluna'] = 'valor'
+
