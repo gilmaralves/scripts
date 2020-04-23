@@ -7,12 +7,24 @@ https://pandas.pydata.org/docs/
 
 Importar arquivos de dados: 
 (xlsx, xls, ods)
-df=pd.read_excel('nome do arquivo', sheet_name=[], usecols= range([]), skiprows= range([]))
-(csv)
+df=pd.read_excel('nome do arquivo', sheet_name='Nome da aba", skiprows= range([]))
+
+Remover linha desnecessária
+recente.iloc[-3:]
+recente=recente[:-1]
+
+Checar data
+
+Remover colunas
+(manter apenas.... 
+recente.drop(recente.columns[[1, 4, 5, 6, 7, 8, 9, 10]], axis=1, inplace=True)
+
+Ordenar colunas
+recente=recente[['Número Infopen', 'Nome Preso', 'Mãe', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade']]
 
 Colocar tudo maíúsculo
-alvaras['Mãe']=alvaras['Mãe'].str.upper()
-alvaras['Nome Preso']=alvaras['Nome Preso'].str.upper()
+recente['Mãe']=recente['Mãe'].str.upper()
+recente['Nome Preso']=recente['Nome Preso'].str.upper()
 
 Inserir colunas e valores
 df.insert(2, "Age", [21, 23, 24, 21], True) 
@@ -27,6 +39,7 @@ df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
 alvaras.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrência Carcerária - Data'], keep='first', inplace=True)
 
 Unificar listas
+final_importar=pd.read_csv('final_importar.csv')
 final_importar=alvaras.append(alvaras2, ignore_index=True)
 
 Eliminar linhas
