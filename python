@@ -4,7 +4,6 @@ PANDAS
 ======
 https://pandas.pydata.org/docs/
 
-
 Importar arquivos de dados: 
 (xlsx, xls, ods)
 df=pd.read_excel('nome do arquivo', sheet_name='Nome da aba", skiprows= range([]))
@@ -15,7 +14,7 @@ recente=recente[:-1]
 
 Checar data
 
-Remover colunas
+Remover colunas desnecessárias
 (manter apenas.... 
 recente.drop(recente.columns[[1, 4, 5, 6, 7, 8, 9, 10]], axis=1, inplace=True)
 
@@ -30,20 +29,14 @@ Inserir colunas e valores
 df.insert(2, "Age", [21, 23, 24, 21], True) 
 df['Nome da coluna'] = 'valor'
 
-Eliminar colunas desnecessárias
-df.drop('[nome da coluna]', axis=1, inplace=True)
-df.drop(df.columns[[0, 4, 2]], axis = 1, inplace = True)
+Unificar listas
+final_importar=pd.read_csv('final_importar.csv')
+final_importar.to_csv('final_importar_antigo.csv')
+final_importar=alvaras.append(alvaras2, ignore_index=True)
 
 Eliminar registros repetidos
 df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
 alvaras.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrência Carcerária - Data'], keep='first', inplace=True)
-
-Unificar listas
-final_importar=pd.read_csv('final_importar.csv')
-final_importar=alvaras.append(alvaras2, ignore_index=True)
-
-Eliminar linhas
-df=df[:-1]
 
 Selecionar colunas
 df[['nomes das colunas entre aspas simples e separados por vírgulas']]
