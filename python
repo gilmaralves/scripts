@@ -25,24 +25,23 @@ recente=recente[['Número Infopen', 'Nome Preso', 'Mãe', 'Ocorrência Carcerár
 Colocar tudo maíúsculo
 recente['Mãe']=recente['Mãe'].str.upper()
 recente['Nome Preso']=recente['Nome Preso'].str.upper()
+print(recente[['Nome Preso', 'Mãe']])
+
 
 Inserir colunas e valores
 df.insert(2, "Age", [21, 23, 24, 21], True) 
-df['Nome da coluna'] = 'valor'
+recente['Data extração'] = 'valor'
 
 Unificar listas
 final_importar=pd.read_csv('final_importar.csv')
-final_importar.to_csv('final_importar_antigo.csv')
-final_importar=alvaras.append(alvaras2, ignore_index=True)
+final_importar.to_csv('final_importar_antigo.csv', index=False)
+final_importar=final_importar.append(recente, ignore_index=True)
 
 Eliminar registros repetidos
 df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
-alvaras.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrência Carcerária - Data'], keep='first', inplace=True)
-
-Selecionar colunas
-df[['nomes das colunas entre aspas simples e separados por vírgulas']]
+final_importar.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrência Carcerária - Data'], keep='first', inplace=True)
 
 Escrever arquivo csv
-df.to_csv('df.csv', index= False)
+final_importar.to_csv('final_importar.csv', index= False)
 
 
