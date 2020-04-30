@@ -44,4 +44,8 @@ final_importar.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrê
 Escrever arquivo csv
 final_importar.to_csv('final_importar.csv', index= False)
 
+CONTA VALORES
+https://data36.com/pandas-tutorial-2-aggregation-and-grouping/
+importa numpy as mp
+final_importar.groupby('Data extração').count()
 
