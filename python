@@ -6,7 +6,7 @@ https://pandas.pydata.org/docs/
 
 Importar arquivos de dados: 
 (xlsx, xls, ods)
-df=pd.read_excel('nome do arquivo', sheet_name='Nome da aba", skiprows= range([]), dtype={'Ocorrência Carcerária - Ano':'string'})
+recente=pd.read_excel('27 04 2020_Relatorio_de_presos_desligados 3.xlsx', skiprows=range(1), dtype={'Ocorrência Carcerária - Data':'string'})
 
 
 Remover linha desnecessária
