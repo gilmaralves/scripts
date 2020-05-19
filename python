@@ -11,42 +11,39 @@ recente=pd.read_excel('27 04 2020_Relatorio_de_presos_desligados 3.xlsx', skipro
 (xlsx, xls, ods) - mais de uma folha
 xls=pd.ExcelFile('13 05 2020_Relatorio_de_presos_desligados3.xlsx')
 desligados=pd.read_excel(xls, 0, skiprows=range(1))
-covid=pd.read_excel(xls, 0)
-
+covid=pd.read_excel(xls, 1)
 
 Remover linha desnecessária
 recente.iloc[-3:] / desligados.iloc[-3:]
 recente=recente[:-1] / desligados=desligados[:-1]
 
+Remover colunas desnecessárias
+desligados.drop(desligados.columns[[1, 4, 5, 6, 7, 8, 9, 10, 14]], axis=1, inplace=True)
+covid.drop(covid.columns[[0, 1, 2, 4, 7, 8, 10, 11, 12]], axis=1, inplace=True)
+
 Renomear coluna
 desligados.rename(columns={'Número Infopen':'Infopen'}, inplace=True)
+covid.rename(columns={'Razão_Deslig':'COVID_19'}, inplace=True)
+covid.rename(columns={'idade em 15/mar/2020':'Idade'}, inplace=True)
 
 Mesclar dataframes
 resultado=pd.merge(desligados, covid, on=['Infopen', 'Infopen'], how='left')
 
-Remover colunas
-recente.drop(recente.columns[[1, 4, 5, 6, 7, 8, 9, 10, 15, 16, 17]], axis=1, inplace=True)
-
-Remover colunas desnecessárias
-(manter apenas.... 
-recente.drop(recente.columns[[1, 4, 5, 6, 7, 8, 9, 10]], axis=1, inplace=True)
-
 Ordenar colunas
-recente=recente[['Número Infopen', 'Nome Preso', 'Mãe', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade']]
+resultado=resultado[['Infopen', 'Nome Preso', 'Mãe', 'Sexo', 'idade em 15/mar/2020', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade', 'COVID_19', 'Data extração']]
 
 Colocar tudo maíúsculo
-recente['Mãe']=recente['Mãe'].str.upper()
-recente['Nome Preso']=recente['Nome Preso'].str.upper()
-print(recente[['Nome Preso', 'Mãe']])
-
+resultado['Mãe']=resultado['Mãe'].str.upper()
+resultado['Nome Preso']=resultado['Nome Preso'].str.upper()
+print(resultado[['Nome Preso', 'Mãe']])
 
 Inserir colunas e valores
 df.insert(2, "Age", [21, 23, 24, 21], True) 
-recente['Data extração'] = 'valor'
+resultado['Data extração'] = 'valor'
 
 Unificar listas
 final_importar=pd.read_csv('final_importar.csv')
-final_importar.to_csv('final_importar_antigo.csv', index=False)
+ 
 final_importar=final_importar.append(recente, ignore_index=True)
 
 Eliminar registros repetidos
@@ -54,7 +51,7 @@ df.drop_duplicates(subset='nome da(s) coluna(s)', keep= 'first', inplace=True)
 final_importar.drop_duplicates(subset=['Número Infopen', 'Nome Preso', 'Ocorrência Carcerária - Data'], keep='first', inplace=True)
 
 Escrever arquivo csv
-final_importar.to_csv('final_importar.csv', index= False)
+resultado.to_csv('final_importar.csv', index= False)
 
 CONTA VALORES
 https://data36.com/pandas-tutorial-2-aggregation-and-grouping/
