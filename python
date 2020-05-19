@@ -5,15 +5,27 @@ PANDAS
 https://pandas.pydata.org/docs/
 
 Importar arquivos de dados: 
-(xlsx, xls, ods)
+(xlsx, xls, ods) - só uma folha
 recente=pd.read_excel('27 04 2020_Relatorio_de_presos_desligados 3.xlsx', skiprows=range(1), dtype={'Ocorrência Carcerária - Data':'string'})
+
+(xlsx, xls, ods) - mais de uma folha
+xls=pd.ExcelFile('13 05 2020_Relatorio_de_presos_desligados3.xlsx')
+desligados=pd.read_excel(xls, 0, skiprows=range(1))
+covid=pd.read_excel(xls, 0)
 
 
 Remover linha desnecessária
-recente.iloc[-3:]
-recente=recente[:-1]
+recente.iloc[-3:] / desligados.iloc[-3:]
+recente=recente[:-1] / desligados=desligados[:-1]
 
-Checar data
+Renomear coluna
+desligados.rename(columns={'Número Infopen':'Infopen'}, inplace=True)
+
+Mesclar dataframes
+resultado=pd.merge(desligados, covid, on=['Infopen', 'Infopen'], how='left')
+
+Remover colunas
+recente.drop(recente.columns[[1, 4, 5, 6, 7, 8, 9, 10, 15, 16, 17]], axis=1, inplace=True)
 
 Remover colunas desnecessárias
 (manter apenas.... 
