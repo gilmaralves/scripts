@@ -60,3 +60,4 @@ https://data36.com/pandas-tutorial-2-aggregation-and-grouping/
 importa numpy as mp
 final_importar.groupby('Data extração').count()
 
+df['column name'].astype('Int64')
