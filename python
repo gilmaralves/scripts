@@ -27,12 +27,12 @@ covid.rename(columns={'Razão_Deslig':'COVID_19'}, inplace=True)
 covid.rename(columns={'idade em 15/mar/2020':'Idade'}, inplace=True)
 
 Mesclar dataframes
-resultado=pd.merge(desligados, covid, on=['Infopen', 'Infopen'], how='left')
+resultado=pd.merge(desligados, covid, on=['Infopen', 'Infopen'], how='left', indicator=True)
 
 Ordenar colunas
 resultado=resultado[['Infopen', 'Nome Preso', 'Mãe', 'Sexo', 'Idade', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade', 'COVID_19', 'Data extração']]
 com reds
-resultado=resultado[['Infopen', 'Nome Preso', 'Mãe', 'Sexo', 'Idade', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade', 'COVID_19', 'ENVOLVIDO_REDS?', 'Data extração']]
+resultado=resultado[['Infopen', 'Nome Preso', 'Mãe', 'Sexo', 'Idade', 'Ocorrência Carcerária - Data', 'Ocorrência Carcerária - Tipo', 'Ocorrência Carcerária - Motivo/Finalidade', 'COVID_19', 'ENVOLVIDO_REDS', '_merge', 'Data extração']]
 
 Colocar tudo maíúsculo
 resultado['Mãe']=resultado['Mãe'].str.upper()
